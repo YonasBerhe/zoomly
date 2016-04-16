@@ -7,7 +7,9 @@
     "test": "test"
   },
   "dependencies": {
+    "express": "^4.13.4",
     "havenondemand": "^1.1.2",
+    "serve-static": "^1.10.2",
     "three": "^0.75.0"
   },
   "devDependencies": {},
