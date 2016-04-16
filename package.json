@@ -7,6 +7,7 @@
     "test": "test"
   },
   "dependencies": {
+    "aframe": "^0.2.0",
     "havenondemand": "^1.1.2",
     "three": "^0.75.0"
   },
