@@ -1,0 +1,28 @@
+{
+  "name": "zoomly",
+  "version": "0.0.0",
+  "description": "Placeholder",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "havenondemand": "^1.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/halfspiral/zoomly.git"
+  },
+  "keywords": [
+    "zoomly"
+  ],
+  "author": "placeholder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/halfspiral/zoomly/issues"
+  }
+}
