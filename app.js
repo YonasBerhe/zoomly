@@ -1,25 +1,37 @@
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-var renderer = new THREE.WebGLRenderer();
+var diameter = 3;
 
+var color = d3.scale.linear()
+    .domain([-1, 5])
+    .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
+    .interpolate(d3.interpolateHcl);
 
-var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-// Geometry/ Material
-var cube = new THREE.Mesh( geometry, material );
+var pack = d3.layout.pack()
+    .padding(2)
+    .size([diameter, diameter])
+    .value(function(d) { return d.size; })
 
-//Pass in as many items as possible
-scene.add(cube);
+var scene = d3.select("a-scene");
 
+d3.json("flare.json", function(error, root) {
+  if (error) throw error;
 
-//Zoom in
-camera.position.z = 10;
+  var focus = root,
+      nodes = pack.nodes(root),
+      view;
 
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
-
-function render() {
-	requestAnimationFrame( render );
-	renderer.render( scene, camera );
-}
-render();
+  var circle = scene.selectAll("a-cylinder")
+      .data(nodes)
+    .enter().append("a-cylinder")
+      .attr("position", function(d) {
+        return d.x + " " + (d.depth) * 0.2 + " " + d.y;
+      })
+      .attr("radius", function(d) { return d.r; })
+      .attr("height", 0.2)
+      .attr("color", function(d) {
+        return d.children ? color(d.depth) : "gray";
+      })
+      .attr("roughness", 0.8)
+    .append("a-event")
+      .attr("name", "cursor-mouseenter")
+      .attr("color", "orange");
+});
