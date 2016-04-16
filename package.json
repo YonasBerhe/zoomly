@@ -7,7 +7,8 @@
     "test": "test"
   },
   "dependencies": {
-    "havenondemand": "^1.1.2"
+    "havenondemand": "^1.1.2",
+    "three": "^0.75.0"
   },
   "devDependencies": {},
   "scripts": {
