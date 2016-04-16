@@ -1,15 +1,34 @@
-var subreddit = 'earchporn';
+var subreddits = {  artificial: 'artificial', seattle: 'Seattle'};
+
+console.log(subreddits);
+
+var dataMerged = {};
+
+
+//dataMerged[subreddit] = [];
+//dataMerged['dataisbeautiful'] = [];
+
+console.log(dataMerged);
+
+
 
 
 $.ajax ({
 
-url: 'https://www.reddit.com/r/' + subreddit + '.json?limit=100',
-dataType: 'json',
+url: 'https://www.reddit.com/r/' + subreddits + '.json?limit=100',
+dataType: 'jsonp',
+jsonp: 'jsonp',
 success: function (data) {
 
- var jsonv = data.children;
+
+
+//var json = data.data.children;
+//console.log(json);
 
 
 }
 
 })
+
+
+
