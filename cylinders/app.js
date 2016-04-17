@@ -4,7 +4,7 @@ var padding = {
   width: 0.5,
   height: 0.1
 };
-var height = 0.4;
+var height = 0.7;
 
 var root = d3.select("a-entity#objects");
 
@@ -14,7 +14,9 @@ d3.json("subreddits.json", function(error, subreddits) {
     return {
       subreddit: name,
       index: index,
-      articles: subreddits[name]
+      articles: subreddits[name].filter(function (article) {
+        return article.image;
+      })
     }
   });
 
@@ -34,7 +36,8 @@ d3.json("subreddits.json", function(error, subreddits) {
     if (selectedSubreddit) {
       className = 'group-' + selectedSubreddit.subreddit;
       scene.selectAll("a-curvedimage." + className).remove();
-      scene.selectAll("a-cylinder." + className).attr('opacity', 0.9);
+      selectedSubreddit = null;
+      renderCylinders();
     }
 
     selectedSubreddit = sub;
@@ -46,42 +49,44 @@ d3.json("subreddits.json", function(error, subreddits) {
     }
 
     scene.select('a-assets').selectAll('img')
-    .data(sub.articles, getAssetId)
+    .data(sub.articles.slice(0, maxImages), getAssetId)
     .enter().append('img')
     .attr('id', getAssetId)
     .attr('src', function (d) {
       return d.image;
     });
-
+    var articles = sub.articles.slice(0, maxImages);
     scene.selectAll("a-curvedimage." + className)
-      .data(sub.articles)
+      .data(articles)
     .enter().append("a-curvedimage")
       .attr("class", className)
       .attr("position", function(d) {
         return '0 '+ (height/2 + padding.height + subIndex * (height + padding.height)) + ' 0';
       })
       .attr("src", function (d, i) {
-        return '#' + getAssetId(d, i);
+        return d.image;
       })
       .attr("radius", function(d) {
         return radius;
       })
       .attr("theta-length", function (d) {
-        return 1 / length * 360 - 1;
+        return 1 / articles.length * 360 - 1;
       })
       .attr("height", function (d) {
-        return d.height/d.width * 3;
+        return d.height/d.width * height;
       })
       .attr("rotation", function (d, i) {
-        return '0 ' + (i / maxImages * 360 - 1) + ' 0';
+        return '0 ' + (i / articles.length * 360 - 1) + ' 0';
       });
   }
 
 
 
-  // create a cylinder for each subreddit
-  var circle = scene.selectAll("a-cylinder")
-      .data(asArray)
+  function renderCylinders() {
+  scene.selectAll("a-cylinder")
+      .data(asArray, function (d) {
+        return d.subreddit;
+      })
     .enter().append("a-cylinder")
       .attr("position", function(d, i) {
         return '0 '+ (height/2 + padding.height + i * (height + padding.height)) + ' 0';
@@ -103,8 +108,10 @@ d3.json("subreddits.json", function(error, subreddits) {
       })
       .on('click', function(d) {
         displaySubreddit(d);
-        d3.select(this).attr('opacity', 0);
+        d3.select(this).remove();
       });
+  }
+  renderCylinders();
 
     // one big cylinder
     var fullHeight = padding.height * 2 + numSubreddits * (height + padding.height);
