@@ -11,21 +11,31 @@ subreddits.forEach(function(subreddit) {
             var json = data.data.children;
             dataMerged[subreddit] = json;
             //console.log(dataMerged);
-            //     console.log(dataMerged.Seattle[0].data.url);
-            for (i = 0; i < 100; i++) {
-                console.log(dataMerged.dataisbeautiful[i].data.title);
-                console.log(dataMerged.dataisbeautiful[i].data.url);
+            //console.log(dataMerged.Seattle[0].data);
 
-            }
+            json.forEach(function(data) {
+                if (data.data.preview) {
+                console.log(data.data.preview.images[0].source.url)
+                 var image = data.data.preview.images[0].source.url;
+                  window.image = image;
+                }
+
+                console.log(data.data.title);
+                console.log(data.data.url);
 
 
-            var title = dataMerged.dataisbeautiful[i].data.title;
-            var url = dataMerged.dataisbeautiful[i].data.url;
 
+            })
+
+
+
+            var title = data.data.title;
+            var url = data.data.url;
             var content = {
                 title,
-                url
-            };
+                url,
+                image
+               };
 
 
             $.post('/data', {
