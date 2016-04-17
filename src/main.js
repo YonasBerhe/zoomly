@@ -10,8 +10,13 @@ const client = new hod.HODClient(apikey);
 const index = 'zoomly';
 
 module.exports = {
-    findRelated: function(text, indexes) {
-        client.call('findrelatedconcepts', callback, {text: text, indexes: indexes});
+    findRelated: function(input) {
+        if (input.url) {
+            client.call('findrelatedconcepts', callback, {url: input.url, indexes: index});
+        } else {
+            client.call('findrelatedconcepts', callback, {text: input.text, indexes: index});
+        }
+
     },
     addToIndex: function(url, index) {
         var obj = {
