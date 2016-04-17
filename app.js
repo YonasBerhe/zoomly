@@ -1,4 +1,4 @@
-var diameter = 3;
+var diameter = 4;
 
 var color = d3.scale.linear()
     .domain([-1, 5])
@@ -10,7 +10,7 @@ var pack = d3.layout.pack()
     .size([diameter, diameter])
     .value(function(d) { return d.size; })
 
-var scene = d3.select("a-scene");
+var scene = d3.select("a-entity#objects");
 
 d3.json("flare.json", function(error, root) {
   if (error) throw error;

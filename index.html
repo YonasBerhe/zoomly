@@ -10,7 +10,7 @@
   <body>
     <a-scene stats>
       <!-- camer stuff -->
-      <a-entity position="0 1.8 4">
+      <a-entity position="0 2 6">
         <a-entity camera look-controls wasd-controls="fly: true">
           <a-cursor color="red"></a-cursor>
         </a-entity>
@@ -20,12 +20,11 @@
       <a-entity light="type: point; color: #eee; intensity: 1.0" position="0 3 0"></a-entity>
       <a-entity light="type: ambient; color: #eee; intensity: 0.3" position="0 5 0"></a-entity>
 
+      <a-entity id="objects" position="-2 0 0">
+      </a-entity>
+
       <!-- sky -->
       <a-sky color="skyblue"></a-sky>
-
-      <a-entity if="elements">
-        
-      </a-entity>
     </a-scene>
     <script src="app.js"></script>
   </body>
