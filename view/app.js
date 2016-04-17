@@ -51,6 +51,7 @@ d3.json("flare.json", function(error, root) {
         return d.x + " " + (d.depth) * 0.2 + " " + d.y;
       })
       .attr("radius", function(d) { return d.r; })
+      .attr("segments-radial", function(d) { return 36*(d.r/root.r)+4; })
       .attr("height", 0.2)
       .attr("color", function(d) {
         return d.children ? color(d.depth) : "gray";
