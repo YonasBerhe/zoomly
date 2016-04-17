@@ -16,9 +16,20 @@ subreddits.forEach(function(subreddit){
 console.log(dataMerged.dataisbeautiful[i].data.title);
 console.log(dataMerged.dataisbeautiful[i].data.url);
 
-            }
+}
 
-        }
+var content = {
+var title = dataMerged.dataisbeautiful[i].data.title);
+var url = console.log(dataMerged.dataisbeautiful[i].data.url);
+}
+
+
+$.post('/data', content, function (data) {
+          console.log("working");
+      })
+
+
+     
     })
 })
 
