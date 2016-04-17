@@ -37,6 +37,18 @@ app.post('/search', function(req, res) {
     });
 });
 
+app.post('/opacity', function(req, res) {
+    var url = req.body.url;
+    console.log(url);
+    res.send({
+        opacity: getOpacities(url)
+    });
+});
+
+function getOpacities(url) {
+    return Math.random();
+}
+
 app.listen(PORT, function() {
 
 console.log("visit localhost:" + PORT + " " + "to view project")
