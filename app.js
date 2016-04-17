@@ -27,6 +27,7 @@ d3.json("flare.json", function(error, root) {
       })
       .attr("radius", function(d) { return d.r; })
       .attr("height", 0.2)
+      .attr("segments-radial", 12)
       .attr("color", function(d) {
         return d.children ? color(d.depth) : "gray";
       })
