@@ -24,5 +24,5 @@ console.log('post data', data);
 
 app.listen(PORT, function() {
 
-} );
+});
 

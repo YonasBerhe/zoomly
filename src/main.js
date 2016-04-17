@@ -9,6 +9,10 @@ const apikey = '2432e2a1-173d-42df-9f7a-0f118ea73ae7';
 const client = new hod.HODClient(apikey);
 const index = 'zoomly';
 
+/*
+Relevant functions are search and addToIndex
+ */
+
 module.exports = {
     findRelated: function(input) {
         if (input.url) {
@@ -31,6 +35,18 @@ module.exports = {
         } else {
             client.call('extractconcepts', callback, {text: input.text});
         }
+    },
+    search: function(query) {
+        client.call('querytextindex', callback, {text: query, indexes: [index]});
+    },
+    status: function() {
+        client.call('indexstatus', callback, {index: index});
+    },
+    del: function(conf) {
+        client.call('deletetextindex', callback, {index: index, confirm: conf});
+    },
+    create: function() {
+        client.call('createtextindex', callback, {index: index, flavor: 'standard', display_name: index});
     }
 };
 
