@@ -26,6 +26,8 @@ main.search('How much do you spend on food in a month?');
 
 
 app.listen(PORT, function() {
+
+console.log("visit localhost:" + PORT + " " + "to view project")
 });
 
 

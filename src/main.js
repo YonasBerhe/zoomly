@@ -10,6 +10,7 @@ Relevant functions are search and addToIndex
  */
 
 module.exports = {
+
     findRelated: function(input) {
         if (input.url) {
             client.call('findrelatedconcepts', callback, {url: input.url, indexes: index});
@@ -31,17 +32,30 @@ module.exports = {
         } else {
             client.call('extractconcepts', callback, {text: input.text});
         }
-    },
+},
+
+
+
+
     search: search,
     status: function() {
         client.call('indexstatus', callback, {index: index});
-    },
+},
+
+
+
     del: function(conf) {
         client.call('deletetextindex', callback, {index: index, confirm: conf});
-    },
+},
+
+
+
+
     create: function() {
         client.call('createtextindex', callback, {index: index, flavor: 'standard', display_name: index});
     }
+
+
 };
 
 function search(query) {
