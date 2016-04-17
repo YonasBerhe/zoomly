@@ -26,9 +26,7 @@ subreddits.forEach(function(subreddit) {
                 window.url = url;
 
 
-            })
-
-
+            });
 
             var content = {
                 title,
@@ -36,14 +34,11 @@ subreddits.forEach(function(subreddit) {
                 image
             };
 
-
             $.post('/data', {
                 info: content
             }, function(data) {
                 console.log("working");
             })
-
-
 
         }
     })

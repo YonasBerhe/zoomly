@@ -11,13 +11,13 @@ app.use(express.static('view'));
 app.use('/node_modules', express.static('node_modules'));
 
 
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 
 app.post('/data', function(req, res) {
 var data = req.body.info;
-console.log('post data' , data );
+console.log('post data', data);
 });
 
 
