@@ -7,6 +7,6 @@ var app = express();
 app.use(express.static('view'));
 
 
-app.listen(3000);
+app.listen(6000);
 
 console.log("app running on localhost:3000")
