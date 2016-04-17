@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const main = require('./src/main.js');
 
 app.use(express.static('view'));
+app.use(express.static('cylinders'));
 app.use('/node_modules', express.static('node_modules'));
 
 app.use(bodyParser.urlencoded({extended: true}));
