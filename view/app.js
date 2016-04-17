@@ -32,6 +32,9 @@ d3.json("flare.json", function(error, root) {
       .attr("segments-radial", function(d) { return 36*(d.r/root.r)+4; })
       .attr("height", 0.2)
       .attr("color", colorFunc)
+      .attr("opacity", function (d) {
+        return 0.5;
+      })
       .attr("roughness", 0.8)
       .on('mouseenter', function(d) {
         d3.select(this).attr("color", "orange");
