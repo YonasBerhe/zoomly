@@ -1,9 +1,12 @@
 var diameter = 4;
+var subreddits = ['artificial', 'Seattle','dataisbeautiful', 'EarthPorn'];
+
 
 var color = d3.scale.linear()
     .domain([-1, 5])
     .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
     .interpolate(d3.interpolateHcl);
+
 
 var pack = d3.layout.pack()
     .padding(2)
@@ -15,9 +18,7 @@ var scene = d3.select("a-entity#objects");
 d3.json("flare.json", function(error, root) {
   if (error) throw error;
 
-  var focus = root,
-      nodes = pack.nodes(root),
-      view;
+  var nodes = pack.nodes(root);
 
   var circle = scene.selectAll("a-cylinder")
       .data(nodes)
@@ -26,6 +27,7 @@ d3.json("flare.json", function(error, root) {
         return d.x + " " + (d.depth) * 0.2 + " " + d.y;
       })
       .attr("radius", function(d) { return d.r; })
+      .attr("segments-radial", function(d) { return 36*(d.r/root.r)+4; })
       .attr("height", 0.2)
       .attr("color", function(d) {
         return d.children ? color(d.depth) : "gray";
