@@ -1,7 +1,7 @@
 'use strict';
 
 const hod = require('havenondemand');
-const apikey = '2432e2a1-173d-42df-9f7a-0f118ea73ae7;
+const apikey = '2432e2a1-173d-42df-9f7a-0f118ea73ae7';
 const client = new hod.HODClient(apikey);
 const index = 'zoomly';
 
