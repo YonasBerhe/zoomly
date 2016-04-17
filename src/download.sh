@@ -1,0 +1,1 @@
+curl https://www.reddit.com/r/$1.json?limit=100 -s | jq '[.data.children[].data | {title: .title, url: .permalink, image: .preview.images[0].source.url}]' -M
