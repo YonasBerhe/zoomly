@@ -5,6 +5,7 @@ var app = express();
 var PORT = 7000;
 
 app.use(express.static('view'));
+app.use('/node_modules', express.static('node_modules'));
 
 app.listen(PORT);
 
