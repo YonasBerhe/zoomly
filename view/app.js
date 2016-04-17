@@ -40,9 +40,7 @@ var scene = d3.select("a-entity#objects");
 d3.json("flare.json", function(error, root) {
   if (error) throw error;
 
-  var focus = root,
-      nodes = pack.nodes(root),
-      view;
+  var nodes = pack.nodes(root);
 
   var circle = scene.selectAll("a-cylinder")
       .data(nodes)
