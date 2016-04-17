@@ -21,9 +21,21 @@ var data = req.body.info;
 console.log('post data', data);
 });
 
-main.search('How much do you spend on food in a month?');
-
-
+app.post('/search', function(req, res) {
+    var query = req.body.query;
+    main.search(query, function(err, res, body) {
+        if (err) {
+            console.log(err);
+        }
+        var docs = body.documents;
+        var urlWeights = {};
+        for (var i = 0; i < docs.length; i++) {
+            var post = docs[i];
+            urlWeights[post.reference] = post.weight;
+        }
+        console.log(urlWeights);
+    });
+});
 
 app.listen(PORT, function() {
 

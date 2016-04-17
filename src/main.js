@@ -58,8 +58,8 @@ module.exports = {
 
 };
 
-function search(query) {
-    client.call('querytextindex', callback, {text: query, indexes: [index]});
+function search(query, cb) {
+    client.call('querytextindex', cb, {text: query, indexes: [index]});
 }
 
 function callback(err,res,body) {
