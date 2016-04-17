@@ -1,9 +1,9 @@
-var subreddits = [
-    'artificial',
-    'Seattle'
-];
+var subreddits = { one : 'artificial', two: 'Seattle'};
 //console.log(subreddits);
-
+//var subreddits = [
+//'artificial', 
+//'seattle'
+//]
 
 var dataMerged = {};
 
@@ -46,7 +46,8 @@ for (var i = 0; i < 2; i++) {
     } else {
         subreddit = subreddits.two;
     }
-    $.ajax({
+$.ajax({
+        type: "POST",
         url: 'https://www.reddit.com/r/' + subreddit + '.json?limit=100',
         dataType: 'jsonp',
         jsonp: 'jsonp',
@@ -55,6 +56,8 @@ for (var i = 0; i < 2; i++) {
             //console.log(json);
             dataMerged += json;
             console.log(dataMerged);
-        }
+         
+
+       }
     })
 }
