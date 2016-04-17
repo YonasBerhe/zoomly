@@ -1,4 +1,4 @@
-
+var subreddits = ['dataisbeautiful', 'earthporn'];
 var dataMerged = {}; 
 
 subreddits.forEach(function(subreddit){
@@ -12,24 +12,30 @@ subreddits.forEach(function(subreddit){
              dataMerged[subreddit] = json;
 //console.log(dataMerged);
 //     console.log(dataMerged.Seattle[0].data.url);
-           for (i = 0; i < 100; i++) {
-console.log(dataMerged.dataisbeautiful[i].data.title);
-console.log(dataMerged.dataisbeautiful[i].data.url);
+ for (i = 0; i < 100; i++) {
+  console.log(dataMerged.dataisbeautiful[i].data.title);
+  console.log(dataMerged.dataisbeautiful[i].data.url);
 
 }
+
+
+var title = dataMerged.dataisbeautiful[i].data.title;
+var url = dataMerged.dataisbeautiful[i].data.url;
 
 var content = {
-var title = dataMerged.dataisbeautiful[i].data.title);
-var url = console.log(dataMerged.dataisbeautiful[i].data.url);
-}
+title,
+url
+}; 
 
 
-$.post('/data', content, function (data) {
+$.post('/data',{info: content}, function (data) {
           console.log("working");
       })
 
 
      
-    })
+}
 })
+
+});
 
