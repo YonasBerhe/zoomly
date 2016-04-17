@@ -1,5 +1,3 @@
 # Zoomly Interface
 
 Placeholder
-
-
