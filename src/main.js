@@ -1,9 +1,5 @@
 'use strict';
 
-//concept extraction
-//find similar
-//find related
-
 const hod = require('havenondemand');
 const apikey = '2432e2a1-173d-42df-9f7a-0f118ea73ae7';
 const client = new hod.HODClient(apikey);
@@ -36,9 +32,7 @@ module.exports = {
             client.call('extractconcepts', callback, {text: input.text});
         }
     },
-    search: function(query) {
-        client.call('querytextindex', callback, {text: query, indexes: [index]});
-    },
+    search: search,
     status: function() {
         client.call('indexstatus', callback, {index: index});
     },
@@ -49,6 +43,10 @@ module.exports = {
         client.call('createtextindex', callback, {index: index, flavor: 'standard', display_name: index});
     }
 };
+
+function search(query) {
+    client.call('querytextindex', callback, {text: query, indexes: [index]});
+}
 
 function callback(err,res,body) {
     if (err) {
