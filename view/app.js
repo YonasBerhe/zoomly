@@ -33,7 +33,9 @@ d3.json("flare.json", function(error, root) {
       .attr("height", 0.2)
       .attr("color", colorFunc)
       .attr("opacity", function (d) {
-        return getOpacity().opacity;
+          var op = getOpacity('hello');
+          console.log(op);
+        return op;
       })
       .attr("roughness", 0.8)
       .on('mouseenter', function(d) {
@@ -47,19 +49,18 @@ d3.json("flare.json", function(error, root) {
 //input url and return the weighted opacity
 function getOpacity(url) {
     var opacity = {};
+
     $.ajax({
-        type: 'POST',
         url: '/opacity',
-        dataType: 'json',
+        method: 'POST',
         async: false,
         success: function(data) {
-            console.log(data);
             opacity.opacity = data.opacity;
         },
         error: function(err) {
             console.log(err);
-        }
+        },
+        data: {url: url}
     });
-    console.log(opacity);
-    return opacity;
+    return opacity.opacity;
 }

@@ -36,16 +36,17 @@ app.post('/search', function(req, res) {
         console.log(urlWeights);
     });
 });
-var opacity = Math.random();
 
 app.post('/opacity', function(req, res) {
+    var url = req.body.url;
+    console.log(url);
     res.send({
-        opacity: getOpacities()
+        opacity: getOpacities(url)
     });
 });
 
-function getOpacities() {
-    return opacity;
+function getOpacities(url) {
+    return Math.random();
 }
 
 app.listen(PORT, function() {
