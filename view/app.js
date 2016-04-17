@@ -1,20 +1,8 @@
-<<<<<<< HEAD
-var subreddits = ['artificial', 'Seattle','dataisbeautiful', 'EarthPorn'];
-//console.log(subreddits);
-//var subreddits = [
-//'artificial', 
-//'seattle'
-//]
-=======
 var diameter = 4;
->>>>>>> fc34a83289c4e3a1c97ce9d3776d4bddd32dcff2
+var subreddits = ['artificial', 'Seattle','dataisbeautiful', 'EarthPorn'];
 
-var color = d3.scale.linear()
-    .domain([-1, 5])
-    .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
-    .interpolate(d3.interpolateHcl);
+var dataMerged = {}; 
 
-<<<<<<< HEAD
 subreddits.forEach(function(subreddit){
    $.ajax({
        type: "POST",
@@ -27,14 +15,21 @@ subreddits.forEach(function(subreddit){
 //console.log(dataMerged);
 //     console.log(dataMerged.Seattle[0].data.url);
            for (i = 0; i < 100; i++) {
-            console.log(dataMerged.dataisbeautiful[i].data.preview.);
+            console.log(dataMerged.dataisbeautiful[i].data.preview);
 
             }
 
         }
     })
 })
-=======
+
+
+var color = d3.scale.linear()
+    .domain([-1, 5])
+    .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
+    .interpolate(d3.interpolateHcl);
+
+
 var pack = d3.layout.pack()
     .padding(2)
     .size([diameter, diameter])
@@ -65,4 +60,3 @@ d3.json("flare.json", function(error, root) {
       .attr("name", "cursor-mouseenter")
       .attr("color", "orange");
 });
->>>>>>> fc34a83289c4e3a1c97ce9d3776d4bddd32dcff2
