@@ -77,6 +77,9 @@ d3.json("subreddits.json", function(error, subreddits) {
       })
       .attr("rotation", function (d, i) {
         return '0 ' + (i / articles.length * 360 - 1) + ' 0';
+      })
+      .on('click', function (d) {
+        window.open('https://www.reddit.com' + d.url, '_blank');
       });
   }
 
