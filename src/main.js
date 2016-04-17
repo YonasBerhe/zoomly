@@ -18,7 +18,7 @@ module.exports = {
         }
 
     },
-    addToIndex: function(url, index) {
+    addToIndex: function(url) {
         var obj = {
             url: url,
             index: index

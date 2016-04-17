@@ -25,9 +25,7 @@ subreddits.forEach(function(subreddit) {
 
 
 
-            })
-
-
+            });
 
             var title = data.data.title;
             var url = data.data.url;
