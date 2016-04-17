@@ -33,9 +33,8 @@ d3.json("flare.json", function(error, root) {
       .attr("height", 0.2)
       .attr("color", colorFunc)
       .attr("opacity", function (d) {
-          var op = getOpacity('hello');
-          console.log(op);
-        return op;
+          var op = getOpacities('seattle');
+          return op;
       })
       .attr("roughness", 0.8)
       .on('mouseenter', function(d) {
@@ -47,20 +46,26 @@ d3.json("flare.json", function(error, root) {
 });
 
 //input url and return the weighted opacity
-function getOpacity(url) {
-    var opacity = {};
+function getOpacities(query) {
+    var opacity;
 
     $.ajax({
         url: '/opacity',
         method: 'POST',
         async: false,
         success: function(data) {
-            opacity.opacity = data.opacity;
+            opacity = data;
         },
         error: function(err) {
             console.log(err);
         },
-        data: {url: url}
+        data: {query: query}
     });
-    return opacity.opacity;
+    return data;
+}
+
+var relevance = getOpacities("Seattle");
+
+function getOpacity(query, url) {
+    return relevance[url];
 }
