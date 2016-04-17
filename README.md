@@ -9,6 +9,9 @@ To contribute to this code or view this project as is do this:
 3. run node index.js
 4. go to localhost:7000
 
-TODO: 
+TODO:
+Query Text Index
+Create Text Index
+
 
 
