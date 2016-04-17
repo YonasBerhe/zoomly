@@ -1,9 +1,3 @@
-//2432e2a1-173d-42df-9f7a-0f118ea73ae7
-
-const express = require("express");
-var app = express();
-var PORT = process.env.PORT || 3000;
-
-app.use(express.static('view'));
-
-app.listen(PORT);
+/**
+ * Created by e6430 on 4/16/16.
+ */
