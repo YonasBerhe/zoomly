@@ -1,35 +1,31 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset=utf-8>
-		<title>App</title>
-   <script src="https://aframe.io/releases/0.2.0/aframe.min.js">
-    </script>
+  <head>
+    <meta charset="utf-8">
+    <title>Cursor</title>
+    <meta name="description" content="A-Frame D3 example">
+    <script src="aframe.min.js"></script>
+    <script src="node_modules/d3/d3.min.js"></script>
+  </head>
+  <body>
+    <a-scene stats>
+      <!-- camer stuff -->
+      <a-entity position="0 2 6" rotation="-25 0 0">
+        <a-entity camera look-controls wasd-controls="fly: true">
+          <a-cursor color="red"></a-cursor>
+        </a-entity>
+      </a-entity>
 
-    <!--  <script src="node_modules/three/three.min.js"></script> -->
+      <!-- lighting -->
+      <a-entity light="type: point; color: #eee; intensity: 1.0" position="0 3 0"></a-entity>
+      <a-entity light="type: ambient; color: #eee; intensity: 0.3" position="0 5 0"></a-entity>
 
-<!-- client side code-->
+      <a-entity id="objects" position="-2 0 0">
+      </a-entity>
 
-      <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-		<script type="application/javascript" src="app.js">		
-      </script>
-	</head>
-
-<body>
-    <a-scene>
-
-      <a-sphere position="0 1.25 -1" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-box position="-1 0.5 1" rotation="0 45 0" width="1" height="1" depth="1"  color="#4CC3D9"></a-box>
-      <a-cylinder position="1 0.75 1" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-
-      <a-sky color="#ECECEC"></a-sky>
-
+      <!-- sky -->
+      <a-sky color="skyblue"></a-sky>
     </a-scene>
-
-</body>
-
-
-
-
- </html>
+    <script src="app.js"></script>
+  </body>
+</html>

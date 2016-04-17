@@ -1,12 +1,20 @@
+<<<<<<< HEAD
 var subreddits = ['artificial', 'Seattle','dataisbeautiful', 'EarthPorn'];
 //console.log(subreddits);
 //var subreddits = [
 //'artificial', 
 //'seattle'
 //]
+=======
+var diameter = 4;
+>>>>>>> fc34a83289c4e3a1c97ce9d3776d4bddd32dcff2
 
-var dataMerged = {};
+var color = d3.scale.linear()
+    .domain([-1, 5])
+    .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
+    .interpolate(d3.interpolateHcl);
 
+<<<<<<< HEAD
 subreddits.forEach(function(subreddit){
    $.ajax({
        type: "POST",
@@ -26,3 +34,35 @@ subreddits.forEach(function(subreddit){
         }
     })
 })
+=======
+var pack = d3.layout.pack()
+    .padding(2)
+    .size([diameter, diameter])
+    .value(function(d) { return d.size; })
+
+var scene = d3.select("a-entity#objects");
+
+d3.json("flare.json", function(error, root) {
+  if (error) throw error;
+
+  var focus = root,
+      nodes = pack.nodes(root),
+      view;
+
+  var circle = scene.selectAll("a-cylinder")
+      .data(nodes)
+    .enter().append("a-cylinder")
+      .attr("position", function(d) {
+        return d.x + " " + (d.depth) * 0.2 + " " + d.y;
+      })
+      .attr("radius", function(d) { return d.r; })
+      .attr("height", 0.2)
+      .attr("color", function(d) {
+        return d.children ? color(d.depth) : "gray";
+      })
+      .attr("roughness", 0.8)
+    .append("a-event")
+      .attr("name", "cursor-mouseenter")
+      .attr("color", "orange");
+});
+>>>>>>> fc34a83289c4e3a1c97ce9d3776d4bddd32dcff2
