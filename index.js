@@ -17,7 +17,8 @@ app.use(bodyParser.urlencoded());
 
 app.post('/data', function(req, res) {
 var data = req.body.info;
-console.log('post data' , data );
+    console.log('post data' , data );
+
 });
 
 

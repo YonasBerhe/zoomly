@@ -27,14 +27,11 @@ subreddits.forEach(function(subreddit) {
                 url
             };
 
-
             $.post('/data', {
                 info: content
             }, function(data) {
                 console.log("working");
             })
-
-
 
         }
     })
