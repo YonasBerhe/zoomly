@@ -4,6 +4,7 @@ const express = require("express");
 var app = express();
 var PORT = 7000;
 var bodyParser = require('body-parser');
+var main = require('./src/main.js');
 
 
 
@@ -20,9 +21,11 @@ var data = req.body.info;
 console.log('post data', data);
 });
 
+main.search('How much do you spend on food in a month?');
+
 
 
 app.listen(PORT, function() {
-
 });
+
 
