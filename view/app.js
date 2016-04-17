@@ -1,6 +1,4 @@
 var diameter = 4;
-var subreddits = ['artificial', 'Seattle','dataisbeautiful', 'EarthPorn'];
-
 
 var color = d3.scale.linear()
     .domain([-1, 5])
@@ -20,6 +18,10 @@ d3.json("flare.json", function(error, root) {
 
   var nodes = pack.nodes(root);
 
+  var colorFunc = function(d) {
+    return d.children ? color(d.depth) : "gray";
+  }
+
   var circle = scene.selectAll("a-cylinder")
       .data(nodes)
     .enter().append("a-cylinder")
@@ -29,11 +31,12 @@ d3.json("flare.json", function(error, root) {
       .attr("radius", function(d) { return d.r; })
       .attr("segments-radial", function(d) { return 36*(d.r/root.r)+4; })
       .attr("height", 0.2)
-      .attr("color", function(d) {
-        return d.children ? color(d.depth) : "gray";
-      })
+      .attr("color", colorFunc)
       .attr("roughness", 0.8)
-    .append("a-event")
-      .attr("name", "cursor-mouseenter")
-      .attr("color", "orange");
+      .on('mouseenter', function(d) {
+        d3.select(this).attr("color", "orange");
+      })
+      .on('mouseleave', function(d) {
+        d3.select(this).attr("color", colorFunc);
+      });
 });
