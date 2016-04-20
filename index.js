@@ -48,7 +48,6 @@ function getOpacities(query) {
 
 
 app.listen(PORT, function() {
-
 console.log("visit localhost:" + PORT + " " + "to view project")
 });
 
