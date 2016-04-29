@@ -16,3 +16,6 @@ Create Text Index
 ![cylinders interface](https://raw.githubusercontent.com/halfspiral/zoomly/master/cylinders.gif)
 ![packing in 3d](https://raw.githubusercontent.com/halfspiral/zoomly/master/packing.png)
 https://halfspiral.github.io/zoomly/cylinders/
+
+Cross browser compatibility with firefox 
+https://support.mozilla.org/en-US/kb/upgrade-graphics-drivers-use-hardware-acceleration?redirectlocale=en-US&redirectslug=how-do-i-upgrade-my-graphics-drivers
