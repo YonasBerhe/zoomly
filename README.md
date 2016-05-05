@@ -19,3 +19,7 @@ https://halfspiral.github.io/zoomly/cylinders/
 
 Cross browser compatibility with firefox 
 https://support.mozilla.org/en-US/kb/upgrade-graphics-drivers-use-hardware-acceleration?redirectlocale=en-US&redirectslug=how-do-i-upgrade-my-graphics-drivers
+
+TODO:
+
+1. Fix Cross domain errors for cross browser compatibility. 
