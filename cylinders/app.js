@@ -8,7 +8,8 @@ var height = 0.7;
 
 var root = d3.select("a-entity#objects");
 
-d3.json("subreddits.json", function(error, subreddits) {
+    
+d3.json("https://crossorigin.me/https://raw.githubusercontent.com/halfspiral/zoomly/master/cylinders/subreddits.json", function(error, subreddits) {
 
   var asArray = Object.keys(subreddits).map(function(name, index)  {
     return {
@@ -127,3 +128,4 @@ d3.json("subreddits.json", function(error, subreddits) {
         d3.select(this).remove();
       });
 });
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+   <meta charset="utf-8">
+    <title>RSSZ</title>
+
+
+
+      <!-- <script src="../node_modules/aframe/dist/aframe.js"></script>
+  <script src="../node_modules/d3/d3.min.js"></script> -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.2.0/aframe.js"></script> 
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.js"></script> 
+<script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+
+   <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+
+
+
+      </head>
+
+
+
+ <body>
+
+
+ <a-scene>
+      <a-assets></a-assets>
+      <!-- camer stuff -->
+      <a-entity id="camera" position="0 2.8 6.2">
+        <a-entity camera look-controls wasd-controls="fly: true">
+          <a-cursor class="cursor-color"></a-cursor>
+        </a-entity>
+      </a-entity>
+
+      <!-- lighting -->
+      <a-entity light="type: point; color: #eee; intensity: 1.0" position="0 3 0"></a-entity>
+      <a-entity light="type: ambient; color: #eee; intensity: 0.3" position="0 5 0"></a-entity>
+
+      <a-entity id="objects">
+      </a-entity>
+
+      <!-- sky -->
+      <a-sky color="skyblue"></a-sky>
+    </a-scene>
+
+    <script src="app.js"></script>
+
+
+
+
+
+     
+ </body>
+</html>
